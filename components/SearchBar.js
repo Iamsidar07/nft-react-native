@@ -26,10 +26,10 @@ const SearchBar = ({prefix,suffix,...otherProps}) => {
         <TextInput 
         style={{
             flex:1,
-            fontFamily:"AnekDevanagari-Regular",
+            fontFamily:"SpaceGrotesk-Regular",
             paddingHorizontal:15,
             paddingVertical:10,
-            fontSize:18,
+            fontSize:16,
             color:"gray"
             
         }}

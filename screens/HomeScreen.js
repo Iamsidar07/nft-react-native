@@ -1,13 +1,21 @@
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, ImageBackground, } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import SubHeaderItem from '../components/SubHeaderItem';
 import { AntDesign } from '@expo/vector-icons';
 import NftCard from '../components/NftCard';
 import image2 from "../assets/images/person02.png"
 import image3 from "../assets/images/person03.png"
-import nft2 from "../assets/images/nft05.jpeg"
-import nft3 from "../assets/images/nft06.jpeg"
-import nft1 from "../assets/images/nft07.jpeg"
+import nft2 from "../assets/images/nft02.jpeg"
+import nft3 from "../assets/images/nft03.jpeg"
+import nft1 from "../assets/images/nft04.jpg"
+import nft4 from "../assets/images/nft05.jpg"
+import nft5 from "../assets/images/nft06.jpg"
+import nft6 from "../assets/images/nft07.jpg"
+import nft7 from "../assets/images/nft08.jpg"
+import nft8 from "../assets/images/nft09.jpg"
+import nft9 from "../assets/images/nft10.jpg"
+
+import bg2 from "../assets/images/bg2.jpg"
 import Header from '../components/Header';
 import BottomNavigation from '../components/BottomNavigation';
 import { useNavigation } from '@react-navigation/native';
@@ -22,7 +30,7 @@ const HomeScreen = () => {
       height:"100%",
       display:"flex",
       justifyContent:"space-between",
-      backgroundColor:"#e9ecfa"
+      backgroundColor:"#e9ecfa",
     }}>
       {/* header  */}
       <ScrollView showsVerticalScrollIndicator={false} >
@@ -65,13 +73,13 @@ const HomeScreen = () => {
               fontWeight: '100',
               color: "#9C9C9C",
               marginRight: 3,
-              fontFamily: "AnekDevanagari-Light"
+              fontFamily: "SpaceGrotesk-Light"
             }}>
               Best
             </Text>
             <Text style={{
               fontSize: 24,
-              fontFamily: "AnekDevanagari-Medium"
+              fontFamily: "SpaceGrotesk-Medium"
             }}
             >
               Nfts
@@ -87,7 +95,14 @@ const HomeScreen = () => {
           paddingHorizontal:"3%",
           alignItems:"center",
         }}>
+          <NftCard imageUrl={nft8} />
+          <NftCard imageUrl={nft7} />
+          <NftCard imageUrl={nft9} />
+          <NftCard imageUrl={nft6} />
+          <NftCard imageUrl={nft4} />
+          <NftCard imageUrl={nft5} />
           <NftCard imageUrl={nft1} />
+          <NftCard imageUrl={bg2} />
           <NftCard imageUrl={nft2} />
           <NftCard imageUrl={nft3} />
         </ScrollView>

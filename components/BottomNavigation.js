@@ -31,9 +31,6 @@ const BottomNavigation = () => {
                 <AntDesign name="home" size={28} color="white" />
             </TouchableOpacity>
             <TouchableOpacity>
-                <EvilIcons name="search" size={30} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity>
                 <AntDesign name="plus" size={30} color="#6319b8" style={{
                     backgroundColor: "white",
                     borderRadius: 50,

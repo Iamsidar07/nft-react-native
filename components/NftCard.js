@@ -11,6 +11,14 @@ const NftCard = ({imageUrl}) => {
       width: "100%",
       height: 390,
       marginVertical:5,
+      shadowColor: "#d2cdcd",
+      shadowOffset: {
+        width: 0,
+        height: 15,
+      },
+      shadowOpacity: 0.24,
+      shadowRadius: 16.41,
+      elevation: 20
       }}>
       <TouchableOpacity onPress={() => navigation.navigate("Detail",imageUrl)}>
         <Image
@@ -22,6 +30,7 @@ const NftCard = ({imageUrl}) => {
             borderRadius: 25,
           }}
         />
+        
       </TouchableOpacity>
     </View>
   )

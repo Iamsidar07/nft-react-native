@@ -12,14 +12,14 @@ const SubHeaderItem = ({ title, imageUrl,backgroundColor }) => {
       justifyContent: "center",
       marginRight: 10,
       flexDirection: "row",
-      shadowColor: "white",
+      shadowColor: "#d2cdcd",
       shadowOffset: {
         width: 0,
-        height: 4,
+        height: 15,
       },
-      shadowOpacity: 0.30,
-      shadowRadius: 4.65,
-      elevation: 8,
+      shadowOpacity: 0.24,
+      shadowRadius: 16.41,
+      elevation: 20
     }}>
       {imageUrl && <Image
         source={imageUrl}
@@ -32,7 +32,7 @@ const SubHeaderItem = ({ title, imageUrl,backgroundColor }) => {
       />}
       <Text style={{
         fontSize: imageUrl?16:24,
-        fontFamily:"AnekDevanagari-Medium",
+        fontFamily:"SpaceGrotesk-Medium",
         color:backgroundColor?"white":"black",
       }}>
         {title}

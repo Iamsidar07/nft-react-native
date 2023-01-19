@@ -19,10 +19,11 @@ const FavouriteTheme = {
 
 export default function App() {
   const [loaded]=useFonts({
-    "AnekDevanagari-Bold": require("./assets/fonts/AnekDevanagari-Bold.ttf"),
-    "AnekDevanagari-Light": require("./assets/fonts/AnekDevanagari-Light.ttf"),
-    "AnekDevanagari-Medium": require("./assets/fonts/AnekDevanagari-Medium.ttf"),
-    "AnekDevanagari-Regular": require("./assets/fonts/AnekDevanagari-Regular.ttf"),
+    "SpaceGrotesk-Bold": require("./assets/fonts/SpaceGrotesk-Bold.ttf"),
+    "SpaceGrotesk-Light": require("./assets/fonts/SpaceGrotesk-Light.ttf"),
+    "SpaceGrotesk-Medium": require("./assets/fonts/SpaceGrotesk-Medium.ttf"),
+    "SpaceGrotesk-Regular": require("./assets/fonts/SpaceGrotesk-Regular.ttf"),
+    "SpaceGrotesk-SemiBold": require("./assets/fonts/SpaceGrotesk-SemiBold.ttf"),
   });
 
   

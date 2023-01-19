@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-
+import menu from "../assets/images/menu.png"
 const Header = ({title,subTitle,icon}) => {
     return (
         <View>
@@ -18,14 +18,14 @@ const Header = ({title,subTitle,icon}) => {
                     <Text style={{
                         fontSize: 34,
                         color: "#9C9C9C",
-                        fontFamily: 'AnekDevanagari-Light'
+                        fontFamily: 'SpaceGrotesk-SemiBold'
                     }}>
                         {title}
                     </Text>
                     <Text
                         style={{
                             fontSize: 24,
-                            fontFamily: 'AnekDevanagari-Medium'
+                            fontFamily: 'SpaceGrotesk-Bold'
                         }}>
                         {subTitle}
                     </Text>
@@ -37,7 +37,8 @@ const Header = ({title,subTitle,icon}) => {
                     borderRadius: 10,
                     borderColor: "#F2F2F2"
                 }}>
-                    {icon}
+                    {/* {icon} */}
+                    <Image source={menu} resizeMode="contain" style={{height:30,width:30}}/>
                 </TouchableOpacity>
             </View>
 
