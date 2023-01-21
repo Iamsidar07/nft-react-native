@@ -14,8 +14,7 @@ const BottomNavigation = () => {
             justifyContent: "space-around",
             alignItems: "center",
             backgroundColor: "#6319b8",
-            marginHorizontal:4,
-            bottom:10,
+            bottom:5,
             borderRadius:40,
             shadowColor: "white",
             shadowOffset: {

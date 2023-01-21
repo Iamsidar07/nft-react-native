@@ -4,9 +4,9 @@ import React from 'react'
 const SubHeaderItem = ({ title, imageUrl,backgroundColor }) => {
   return (
     <TouchableOpacity style={{
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      backgroundColor: backgroundColor ? backgroundColor :"#f1f5ff",
+      paddingHorizontal:15,
+      paddingVertical:5,
+      backgroundColor: backgroundColor ? backgroundColor :"white",
       borderRadius: 50,
       alignItems: "center",
       justifyContent: "center",

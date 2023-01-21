@@ -1,11 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, ImageBackground, } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView, ImageBackground, Image, } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import SubHeaderItem from '../components/SubHeaderItem';
 import { AntDesign } from '@expo/vector-icons';
 import NftCard from '../components/NftCard';
 import image2 from "../assets/images/person02.png"
 import image3 from "../assets/images/person03.png"
-import nft2 from "../assets/images/nft02.jpeg"
+import nft2 from "../assets/images/nft01.jpg"
 import nft3 from "../assets/images/nft03.jpeg"
 import nft1 from "../assets/images/nft04.jpg"
 import nft4 from "../assets/images/nft05.jpg"
@@ -26,16 +26,17 @@ import { EvilIcons } from '@expo/vector-icons';
 
 const HomeScreen = () => {
   return (
+    
     <SafeAreaView style={{
       height:"100%",
       display:"flex",
       justifyContent:"space-between",
       backgroundColor:"#e9ecfa",
     }}>
+      
       {/* header  */}
       <ScrollView showsVerticalScrollIndicator={false} >
-      <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
-
+        <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
 
         {/* search bar  */}
         <SearchBar
@@ -90,21 +91,19 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         {/* nft cards  */}
-        <ScrollView   contentContainerStyle={{
-          paddingBottom:"5%",
-          paddingHorizontal:"3%",
-          alignItems:"center",
+        
+        <ScrollView contentContainerStyle={{
+          paddingBottom: "5%",
+          paddingHorizontal: "1%",
         }}>
-          <NftCard imageUrl={nft8} />
-          <NftCard imageUrl={nft7} />
-          <NftCard imageUrl={nft9} />
-          <NftCard imageUrl={nft6} />
-          <NftCard imageUrl={nft4} />
-          <NftCard imageUrl={nft5} />
-          <NftCard imageUrl={nft1} />
-          <NftCard imageUrl={bg2} />
-          <NftCard imageUrl={nft2} />
-          <NftCard imageUrl={nft3} />
+          <NftCard imageUrl={nft8} profilePicture={image2} />
+          <NftCard imageUrl={nft7} profilePicture={image3} />
+          <NftCard imageUrl={nft6} profilePicture={image2}/>
+          <NftCard imageUrl={nft5} profilePicture={image3}/>
+          <NftCard imageUrl={nft4} profilePicture={image2}/>
+          <NftCard imageUrl={nft3} profilePicture={image3}/>
+          <NftCard imageUrl={nft2} profilePicture={image2}/>
+          <NftCard imageUrl={nft1} profilePicture={image3} />
         </ScrollView>
       </ScrollView>
       {/* bottom navigation  */}

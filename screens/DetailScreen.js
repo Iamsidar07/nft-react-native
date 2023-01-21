@@ -12,7 +12,7 @@ const DetailScreen = () => {
 
   return (
     <ImageBackground source={imageUrl}
-      resizeMode="cover" blurRadius={20}
+      resizeMode="cover" blurRadius={90}
       style={{
         position: "absolute",
         top: 0,
