@@ -21,7 +21,7 @@ const NftCard = ({ imageUrl, profilePicture }) => {
             resizeMode="contain"
             style={{
               width: "100%",
-              height: 270,
+              height: 300,
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
             }}

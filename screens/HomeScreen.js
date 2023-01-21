@@ -13,7 +13,8 @@ import nft5 from "../assets/images/nft06.jpg"
 import nft6 from "../assets/images/nft07.jpg"
 import nft7 from "../assets/images/nft08.jpg"
 import nft8 from "../assets/images/nft09.jpg"
-import nft9 from "../assets/images/nft10.jpg"
+import nft10 from "../assets/images/nft10.jpg"
+import nft9 from "../assets/images/ms.jpg"
 
 import bg2 from "../assets/images/bg2.jpg"
 import Header from '../components/Header';
@@ -31,13 +32,12 @@ const HomeScreen = () => {
       height:"100%",
       display:"flex",
       justifyContent:"space-between",
-      backgroundColor:"#e9ecfa",
+      backgroundColor: "#f1f1f1",
     }}>
-      
+      {/* <Image source={nft5} resizeMode="cover" blurRadius={70} style={StyleSheet.absoluteFillObject} /> */}
       {/* header  */}
-      <ScrollView showsVerticalScrollIndicator={false} >
         <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
-
+      <ScrollView showsVerticalScrollIndicator={false} >
         {/* search bar  */}
         <SearchBar
           prefix={<EvilIcons name="search" size={34} color="#a79afd" />}
@@ -96,6 +96,8 @@ const HomeScreen = () => {
           paddingBottom: "5%",
           paddingHorizontal: "1%",
         }}>
+          <NftCard imageUrl={nft10} profilePicture={image2} />
+          <NftCard imageUrl={nft9} profilePicture={image2} />
           <NftCard imageUrl={nft8} profilePicture={image2} />
           <NftCard imageUrl={nft7} profilePicture={image3} />
           <NftCard imageUrl={nft6} profilePicture={image2}/>
