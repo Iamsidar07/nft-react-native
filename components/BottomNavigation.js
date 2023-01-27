@@ -16,7 +16,7 @@ const BottomNavigation = () => {
             // borderRadius:40,
         },styles.glass]}>
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-                <AntDesign name="home" size={20} color="white" />
+                <AntDesign name="home" size={20} color="black" />
             </TouchableOpacity>
             <TouchableOpacity>
                 <AntDesign name="plus" size={20} color="white" style={{
@@ -27,10 +27,10 @@ const BottomNavigation = () => {
 
             </TouchableOpacity>
             <TouchableOpacity>
-                <SimpleLineIcons name="graph" size={20} color="white" />
+                <SimpleLineIcons name="graph" size={20} color="black" />
             </TouchableOpacity>
             <TouchableOpacity>
-                <AntDesign name="user" size={20} color="white" />
+                <AntDesign name="user" size={20} color="black" />
             </TouchableOpacity>
         </View>
 
