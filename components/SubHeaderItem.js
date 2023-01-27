@@ -1,44 +1,52 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import {  Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React from 'react'
 
-const SubHeaderItem = ({ title, imageUrl,backgroundColor }) => {
+const SubHeaderItem = ({ title, imageUrl, }) => {
+
   return (
-    <TouchableOpacity style={{
-      paddingHorizontal:15,
-      paddingVertical:5,
-      backgroundColor: backgroundColor ? backgroundColor :"white",
-      borderRadius: 50,
+    <TouchableOpacity style={[{
+      paddingHorizontal:10,
+      paddingVertical:3,
+      borderRadius: 7,
       alignItems: "center",
       justifyContent: "center",
       marginRight: 10,
       flexDirection: "row",
-      shadowColor: "#d2cdcd",
-      shadowOffset: {
-        width: 0,
-        height: 15,
-      },
-      shadowOpacity: 0.24,
-      shadowRadius: 16.41,
-      elevation: 20
-    }}>
+    }, styles.glass, { backgroundColor: imageUrl ? "#6319b8": "transparent", }]}>
       {imageUrl && <Image
-        source={imageUrl}
-        resizeMode="contain"
+        source={{uri:imageUrl}}
+        resizeMode="cover"
         style={{
-          width: 50,
-          height: 50,
+          width: 30,
+          height: 30,
           marginRight: 10,
+          borderRadius:30,
         }}
       />}
       <Text style={{
-        fontSize: imageUrl?16:24,
-        fontFamily:"SpaceGrotesk-Medium",
-        color:backgroundColor?"white":"black",
+        fontSize: imageUrl?14:16,
+        fontFamily:"SpaceGrotesk-Regular",
+        color:imageUrl?"white":"black",
       }}>
-        {title}
+        #{title}
       </Text>
     </TouchableOpacity>
   )
 }
 
 export default SubHeaderItem
+
+const styles = StyleSheet.create({
+  glass: {
+    backgroundColor: "rgba(255, 255, 255, 0.13)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  }
+})

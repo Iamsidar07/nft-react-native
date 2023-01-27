@@ -1,35 +1,24 @@
-import { View, Text, TextInput } from 'react-native'
+import { View,  TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
 const SearchBar = ({prefix,suffix,...otherProps}) => {
   return (
-    <View style={{
+    <View style={[{
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
-      backgroundColor:"white",
         marginHorizontal:10,
         marginTop:10,
-        padding:2,
+        // padding:2,
         borderRadius:3,
-        shadowColor:"white",
-        shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.23,
-      shadowRadius: 2.62,
-
-      elevation: 4,
-    }}>
+    },styles.glass]}>
         {prefix}
         <TextInput 
         style={{
             flex:1,
             fontFamily:"SpaceGrotesk-Regular",
-            paddingHorizontal:15,
-            paddingVertical:10,
-            fontSize:16,
+            paddingVertical:7,
+            fontSize:14,
             color:"gray"
             
         }}
@@ -43,3 +32,18 @@ const SearchBar = ({prefix,suffix,...otherProps}) => {
 }
 
 export default SearchBar
+
+const styles = StyleSheet.create({
+  glass: {
+    backgroundColor: "rgba(255, 255, 255, 0.13)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  }
+})

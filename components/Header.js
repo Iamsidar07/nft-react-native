@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
-import menu from "../assets/images/menu.png"
+import {Ionicons} from "@expo/vector-icons"
 const Header = ({title,subTitle,icon}) => {
     return (
-        <View>
+        <SafeAreaView>
             {/* header  */}
             <View style={{
                 flexDirection: 'row',
@@ -16,7 +16,7 @@ const Header = ({title,subTitle,icon}) => {
                     flex: 1,
                 }}>
                     <Text style={{
-                        fontSize: 34,
+                        fontSize: 24,
                         color: "#9C9C9C",
                         fontFamily: 'SpaceGrotesk-SemiBold'
                     }}>
@@ -24,25 +24,19 @@ const Header = ({title,subTitle,icon}) => {
                     </Text>
                     <Text
                         style={{
-                            fontSize: 24,
+                            fontSize: 18,
                             fontFamily: 'SpaceGrotesk-Bold'
                         }}>
-                        {subTitle}
+                        #{subTitle}
                     </Text>
                 </View>
-                <TouchableOpacity style={{
-                    paddingHorizontal: 5,
-                    paddingVertical: 15,
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    borderColor: "#F2F2F2"
-                }}>
+                <TouchableOpacity>
                     {/* {icon} */}
-                    <Image source={menu} resizeMode="contain" style={{height:30,width:30}}/>
+                    <Ionicons name="ios-menu-outline" size={30} color="black" />
                 </TouchableOpacity>
             </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 

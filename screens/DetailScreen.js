@@ -1,53 +1,48 @@
-import { View, Text, SafeAreaView, Image, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, Image, ImageBackground, ScrollView, TouchableOpacity, StyleSheet,Dimensions } from 'react-native'
 import Header from '../components/Header'
 import { Ionicons } from '@expo/vector-icons';
 import BottomNavigation from '../components/BottomNavigation';
-import nft3 from "../assets/images/nft01.jpg"
-import { SimpleLineIcons, EvilIcons } from '@expo/vector-icons';
+import { SimpleLineIcons, EvilIcons,Entypo,FontAwesome } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
 import Cta from '../components/Cta';
 import Badge from '../components/Badge';
 import Activity from '../components/Activity';
+import detailScreenBg from "../assets/images/bg3.png"
+import { useState } from 'react';
 
 const DetailScreen = () => {
+  const [isLiked, setIsLiked] = useState(false);
   const route = useRoute();
-  const imageUrl = route.params;
+  const nft = route.params;
+  const {width,height}=Dimensions.get("screen");
+
 
   return (
-    <ImageBackground source={imageUrl}
-      resizeMode="cover" blurRadius={80} 
-      style={{
-        position: "absolute",
-        top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
-      }}
-    >
+    
       <SafeAreaView style={{
         display: "flex",
         justifyContent: "space-between",
         height: "100%",
-        backgroundColor: "#f1f1f1",
+        // backgroundColor: "#f1f1f1",
       }}>
-        <Header title={"Nft"} subTitle={"#00079"} icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
+        <Image source={detailScreenBg} resizeMode="cover" blurRadius={5} style={StyleSheet.absoluteFillObject}/>
+        <Header title={nft.name} subTitle={nft.id} icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
 
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{
           paddingBottom:"5%"
         }}>
           
           <View style={{
-            width: "100%",
-            height: 450,
-            padding:20,
-            marginTop:"5%",
+            width: width,
+            height: height/2+70,
+            padding:"2%",
           }}>
-            <Image source={imageUrl}
-              resizeMode="contain"
-              style={{
+            <Image source={{uri:nft.img}}
+              resizeMode="cover"
+              style={[{
                 width: '100%',
                 height: '100%',
-                borderRadius: 25,
+                borderRadius: 20,
                 shadowColor: "#d2cdcd",
                 shadowOffset: {
                   width: 0,
@@ -56,7 +51,7 @@ const DetailScreen = () => {
                 shadowOpacity: 0.24,
                 shadowRadius: 16.41,
                 elevation: 20
-              }}
+              }]}
             />
           </View>
           <View style={{
@@ -68,7 +63,6 @@ const DetailScreen = () => {
               justifyContent:"space-between",
               alignItems:"center",
               paddingHorizontal:10,
-              marginTop:"4%"
             }}>
               <Text style={{
                 fontFamily:"SpaceGrotesk-Bold",
@@ -79,75 +73,68 @@ const DetailScreen = () => {
                 flexDirection: "row",
                 alignItems: "center",
               }}>
-                <TouchableOpacity style={{ backgroundColor: "white",borderRadius:70,width:45,height:45,alignItems:"center",justifyContent:"center",marginRight:5 }} >
-                <EvilIcons name="heart" size={30} color="gray" />
+              
+                <TouchableOpacity style={[{ backgroundColor: "white",borderRadius:10,width:40,height:40,alignItems:"center",justifyContent:"center",marginRight:5 },styles.glass]} >
+                {
+                  isLiked
+                    ?
+                    <FontAwesome name="heart" size={24} color="red" onPress={() => setIsLiked(!isLiked)} />
+                    :
+                    <EvilIcons name="heart" size={29} color="black" onPress={() => setIsLiked(!isLiked)} />
+                }
                 </TouchableOpacity>
-                <TouchableOpacity style={{ backgroundColor: "white",borderRadius:70,width:45,height:45,alignItems:"center",justifyContent:"center" }} >
-                  <EvilIcons name="share-apple" size={30} color="gray" />
+                <TouchableOpacity style={[{ backgroundColor: "white",borderRadius:10,width:40,height:40,alignItems:"center",justifyContent:"center" },styles.glass]} >
+                  <EvilIcons name="share-apple" size={30} color="black" />
                 </TouchableOpacity>
                 
               </View>
             </View>
-            <View style={{flexDirection:"row",alignItems:"center",marginTop:5,backgroundColor:"white",padding:5,borderRadius:20,}}>
-              <Image source={imageUrl} resizeMode="contain" style={{width:40,height:40,borderRadius:20,marginRight:10,}}/>
+            <View style={[{flexDirection:"row",alignItems:"center",alignSelf:"flex-start",marginTop:5,backgroundColor:"white",paddingHorizontal:10 ,paddingVertical:5,borderRadius:30,},styles.glass]}>
+              <Image source={{uri:nft.img}} resizeMode="contain" style={{width:30,height:30,borderRadius:20,marginRight:5,}}/>
               <Text style={{
                 fontFamily: "SpaceGrotesk-SemiBold",
-                fontSize: 16,
-              }}>@Openart</Text>
+                fontSize: 14,
+              }}>@{nft.owner.username}</Text>
             </View>
             <Text style={{
               fontFamily: "SpaceGrotesk-Regular",
-              color:"gray",
+              color:"black",
               fontSize: 16,
               padding:5,
-            }}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod maxime aspernatur id! Vel nemo reprehenderit officia amet quod facilis harum. Lorem ipsum dolor sit</Text>
+            }}>{nft.about}</Text>
             <View style={{ display: "flex", flexDirection: "row", alignItems: "center", marginVertical: 15, }}>
               <Badge title={"fficia"}/>
             </View>
-            <Cta prefixIcon={<SimpleLineIcons name="share-alt" size={18} color="black" />} title={"View on Etherscan"} suffixIcon={<SimpleLineIcons name="share-alt" size={20} color="gray" />} />
-            <Cta prefixIcon={<EvilIcons name="star" size={24} color="black" />} title={"View on IPFS"} suffixIcon={<SimpleLineIcons name="share-alt" size={20} color="gray" />} />
-            <Cta prefixIcon={<EvilIcons name="star" size={24} color="black" />} title={"View on IPFS metadata"} suffixIcon={<SimpleLineIcons name="share-alt" size={18} color="gray" />} />
+            <Cta prefixIcon={<Entypo name="circular-graph" size={24} color="purple" />} title={"View on Etherscan"} suffixIcon={<EvilIcons name="share-google" size={34} color="black" />} />
+            <Cta prefixIcon={<Ionicons name="checkmark-done-sharp" size={24} color="violet" />} title={"View on IPFS"} suffixIcon={<EvilIcons name="share-google" size={34} color="black" />} />
+            <Cta prefixIcon={<Ionicons name="shield-checkmark" size={24} color="green" />} title={"View on IPFS metadata"} suffixIcon={<EvilIcons name="share-google" size={34} color="black" />} />
 
-            <Text style={{
-              fontFamily: "SpaceGrotesk-Regular",
-              fontSize: 24,
-              padding: 10,
-            }}>Live biding</Text>
-            <View style={{
-              padding: "7%",
-              backgroundColor: "white",
+
+            <View style={[{
+              padding: "5%",
               marginTop: 20,
-              borderRadius: 30,
-              shadowColor: "white",
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.23,
-              shadowRadius: 2.62,
-
-              elevation: 4,
-            }}>
+              borderRadius: 10,
+            },styles.glass]}>
               <Text style={{
                 fontFamily: "SpaceGrotesk-Regular",
-                color: "gray",
-                fontSize: 28,
+                color: "black",
+                fontSize: 20,
               }}>Current Bid</Text>
               <Text style={{
                 fontFamily: "SpaceGrotesk-SemiBold",
-                fontSize: 30,
-              }}>0.50 ETH <Text style={{
+                fontSize: 24,
+              }}>{nft.currentBidInEth} ETH <Text style={{
                 fontFamily: "SpaceGrotesk-Bold",
-                fontSize: 18,
-                color: "gray"
-              }}>$1,659.95</Text></Text>
+                fontSize: 14,
+                color: "black"
+              }}>{nft.currentBidIn$}$</Text></Text>
               <View style={{
-                marginVertical: "10%",
+                marginVertical: "5%",
               }}>
                 <Text style={{
                   fontFamily: "SpaceGrotesk-Regular",
-                  fontSize: 28,
-                  color: "gray"
+                  fontSize: 20,
+                  color: "black"
                 }}>Auction ending in</Text>
                 <View style={{
                   flexDirection: "row",
@@ -157,58 +144,48 @@ const DetailScreen = () => {
                   <View>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Medium",
-                      fontSize: 38,
+                      fontSize: 24,
                     }}>12</Text>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Regular",
-                      fontSize: 18,
-                      color: "gray"
+                      fontSize: 14,
+                      color: "black"
                     }}>hours</Text>
                   </View>
                   <View>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Medium",
-                      fontSize: 38,
+                      fontSize: 24,
                     }}>12</Text>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Regular",
-                      fontSize: 18,
-                      color: "gray"
+                      fontSize: 14,
+                      color: "black"
                     }}>minutes</Text>
                   </View>
                   <View>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Medium",
-                      fontSize: 38,
+                      fontSize: 24,
                     }}>12</Text>
                     <Text style={{
                       fontFamily: "SpaceGrotesk-Regular",
-                      fontSize: 18,
-                      color: "gray"
+                      fontSize: 14,
+                      color: "black"
                     }}>seconds</Text>
                   </View>
                 </View>
               </View>
-              <TouchableOpacity style={{
-                backgroundColor: "#3a25f8",
+              <TouchableOpacity style={[{
                 padding: 15,
-                borderRadius: 10,
+                borderRadius: 1,
                 alignItems: "center",
-                marginTop: 5,
-                shadowColor: "black",
-                shadowOffset: {
-                  width: 0,
-                  height: 2,
-                },
-                shadowOpacity: 0.23,
-                shadowRadius: 2.62,
-                elevation: 4,
-              }}>
+                marginTop: 25,
+              },styles.glass,{ borderWidth:0,borderRadius:40,}]}>
 
                 <Text style={{
-                  fontFamily: "SpaceGrotesk-SemiBold",
-                  fontSize: 18,
-                  color: "white"
+                  fontFamily: "SpaceGrotesk-Regular",
+                  fontSize: 24,
                 }}>Place a bid</Text>
 
               </TouchableOpacity>
@@ -218,16 +195,31 @@ const DetailScreen = () => {
               fontSize: 24,
               padding: 10,
             }}>Activity</Text>
-            <Activity image={imageUrl} username="oneart" />
-            <Activity image={imageUrl} username="oneart" />
-            <Activity image={imageUrl} username="oneart" />
+            <Activity image={{uri:nft.owner.img}} username={nft.owner.username} />
+
           </View>
           
         </ScrollView>
         <BottomNavigation />
       </SafeAreaView>
-    </ImageBackground >
+
   )
 }
 
 export default DetailScreen
+
+
+const styles = StyleSheet.create({
+  glass: {
+    backgroundColor: "rgba(255, 255, 255, 0.13)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  }
+})

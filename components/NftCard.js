@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { EvilIcons, FontAwesome } from '@expo/vector-icons';
 
-const NftCard = ({ imageUrl, profilePicture }) => {
+const NftCard = ({ nft }) => {
   const navigation = useNavigation();
   const [isLiked, setIsLiked] = useState(false);
   
@@ -11,30 +11,28 @@ const NftCard = ({ imageUrl, profilePicture }) => {
   return (
     <View >
       <View style={{
-        backgroundColor: "white",
         marginBottom: 7,
-        borderRadius: 8,
       }}>
-        <TouchableOpacity onPress={() => navigation.navigate("Detail", imageUrl)}>
+        <TouchableOpacity onPress={() => navigation.navigate("Detail", nft)}>
           <Image
-            source={imageUrl}
-            resizeMode="contain"
+            source={{uri:nft.img}}
+            resizeMode="cover"
             style={{
               width: "100%",
-              height: 300,
+              height: 361,
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
             }}
           />
         </TouchableOpacity>
-        <View style={{
+        <View style={[{
           padding:5,
           paddingHorizontal:10,
-        }}>
+        }, styles.glass, { borderBottomLeftRadius:10,borderBottomRightRadius:10}]}>
           <Text style={{
             fontFamily: "SpaceGrotesk-SemiBold",
             fontSize: 16,
-          }} numberOfLines={1} adjustsFontSizeToFit >Manoj </Text>
+          }} numberOfLines={1} adjustsFontSizeToFit >{nft.name}</Text>
           <View style={{
             display: "flex",
             flexDirection: "row",
@@ -48,13 +46,13 @@ const NftCard = ({ imageUrl, profilePicture }) => {
               alignItems: "center"
             }}>
               <View>
-                <Image source={profilePicture} resizeMode="contain" style={{ width: 40, height: 40, borderRadius: 50, marginRight: 5 }} />
+                <Image source={{uri:nft.owner.img}} resizeMode="contain" style={{ width: 40, height: 40, borderRadius: 50, marginRight: 5 }} />
                 <Text style={{
                   position: "absolute",
                   right: 6,
                   top: 5,
                   fontSize: 24,
-                  backgroundColor: "green",
+                  backgroundColor: "blue",
                   width: 10,
                   height: 10,
                   borderRadius: 40,
@@ -66,7 +64,7 @@ const NftCard = ({ imageUrl, profilePicture }) => {
                   fontFamily: "SpaceGrotesk-SemiBold",
                   fontSize: 14,
                 }}>
-                  Pawel Panwedilal
+                  {nft.owner.name}
                 </Text>
                 <Text style={{
                   fontFamily: "SpaceGrotesk-Regular",
@@ -74,7 +72,7 @@ const NftCard = ({ imageUrl, profilePicture }) => {
                   fontWeight: "500",
                   color: "gray"
                 }}>
-                  Creator
+                  {nft.owner.type}
                 </Text>
               </View>
             </View>
@@ -90,24 +88,14 @@ const NftCard = ({ imageUrl, profilePicture }) => {
         </View>
       </View>
 
-      <View style={{
+      <View style={[{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly",
         padding:5,
         marginBottom:7,
-        borderRadius:30,
-        shadowColor: "black",
-        shadowOffset: {
-          width: 5,
-          height: 15,
-        },
-        shadowOpacity: 0.24,
-        shadowRadius: 16.41,
-        elevation: 20,
-        backgroundColor:"white"
-      }}>
+      }, styles.glass, { borderRadius: 30, }]}>
         <View style={{
           display: "flex",
           flexDirection: "row",
@@ -120,16 +108,16 @@ const NftCard = ({ imageUrl, profilePicture }) => {
           }}>
             <Text style={{
               fontFamily: "SpaceGrotesk-Regular",
-              fontSize: 18,
+              fontSize: 14,
               color: "gray"
             }}>
               Current bid
             </Text>
             <Text style={{
               fontFamily: "SpaceGrotesk-SemiBold",
-              fontSize: 22,
+              fontSize:16,
             }}>
-              0.5ETH
+              {nft.currentBidInEth}ETH
             </Text>
           </View>
         </View>
@@ -138,14 +126,14 @@ const NftCard = ({ imageUrl, profilePicture }) => {
         }}>
           <Text style={{
             fontFamily: "SpaceGrotesk-Regular",
-            fontSize: 18,
+            fontSize: 14,
             color: "gray"
           }}>
             Ending in
           </Text>
           <Text style={{
             fontFamily: "SpaceGrotesk-SemiBold",
-            fontSize: 22,
+            fontSize: 16,
           }}>
             8h34m6s
           </Text>
@@ -159,3 +147,18 @@ const NftCard = ({ imageUrl, profilePicture }) => {
 }
 
 export default NftCard
+
+const styles = StyleSheet.create({
+  glass: {
+    backgroundColor: "rgba(255, 255, 255, 0.13)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  }
+})

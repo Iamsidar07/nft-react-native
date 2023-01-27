@@ -3,40 +3,26 @@ import { Ionicons } from '@expo/vector-icons';
 import SubHeaderItem from '../components/SubHeaderItem';
 import { AntDesign } from '@expo/vector-icons';
 import NftCard from '../components/NftCard';
-import image2 from "../assets/images/person02.png"
-import image3 from "../assets/images/person03.png"
-import nft2 from "../assets/images/nft01.jpg"
-import nft3 from "../assets/images/nft03.jpeg"
-import nft1 from "../assets/images/nft04.jpg"
-import nft4 from "../assets/images/nft05.jpg"
-import nft5 from "../assets/images/nft06.jpg"
-import nft6 from "../assets/images/nft07.jpg"
-import nft7 from "../assets/images/nft08.jpg"
-import nft8 from "../assets/images/nft09.jpg"
-import nft10 from "../assets/images/nft10.jpg"
-import nft9 from "../assets/images/ms.jpg"
-
-import bg2 from "../assets/images/bg2.jpg"
+import bg2 from "../assets/images/bg4.png"
 import Header from '../components/Header';
 import BottomNavigation from '../components/BottomNavigation';
-import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../components/SearchBar';
 import { EvilIcons } from '@expo/vector-icons';
 
-
+import { nfts, hashtags } from '../content';
 
 const HomeScreen = () => {
   return (
-    
+
     <SafeAreaView style={{
-      height:"100%",
-      display:"flex",
-      justifyContent:"space-between",
+      height: "100%",
+      display: "flex",
+      justifyContent: "space-between",
       backgroundColor: "#f1f1f1",
     }}>
-      {/* <Image source={nft5} resizeMode="cover" blurRadius={70} style={StyleSheet.absoluteFillObject} /> */}
+      <Image source={bg2} resizeMode="contain" blurRadius={5} style={StyleSheet.absoluteFillObject} />
       {/* header  */}
-        <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
+      <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
       <ScrollView showsVerticalScrollIndicator={false} >
         {/* search bar  */}
         <SearchBar
@@ -49,10 +35,9 @@ const HomeScreen = () => {
           paddingHorizontal: 5,
           paddingTop: 10,
         }}>
-          <SubHeaderItem title={"Art"} imageUrl={image3} backgroundColor={"#6319b8"} />
-          <SubHeaderItem title={"📸"} />
-          <SubHeaderItem title={"Queen"} imageUrl={image2} />
-          <SubHeaderItem title={"❤️‍🔥"} />
+          {
+            hashtags.map((item, index) => <SubHeaderItem key={index} title={item.hashtag} imageUrl={item.img} />)
+          }
         </ScrollView>
 
         {/* main section  */}
@@ -62,7 +47,7 @@ const HomeScreen = () => {
           alignItems: 'center',
           justifyContent: "space-between",
           paddingHorizontal: 10,
-          marginTop: 10,
+          marginVertical: 10,
         }}>
           <View style={{
             flexDirection: 'row',
@@ -70,16 +55,16 @@ const HomeScreen = () => {
             justifyContent: "center",
           }}>
             <Text style={{
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: '100',
               color: "#9C9C9C",
               marginRight: 3,
               fontFamily: "SpaceGrotesk-Light"
             }}>
-              Best
+              Explore
             </Text>
             <Text style={{
-              fontSize: 24,
+              fontSize: 20,
               fontFamily: "SpaceGrotesk-Medium"
             }}
             >
@@ -91,21 +76,14 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         {/* nft cards  */}
-        
+
         <ScrollView contentContainerStyle={{
           paddingBottom: "5%",
           paddingHorizontal: "1%",
         }}>
-          <NftCard imageUrl={nft10} profilePicture={image2} />
-          <NftCard imageUrl={nft9} profilePicture={image2} />
-          <NftCard imageUrl={nft8} profilePicture={image2} />
-          <NftCard imageUrl={nft7} profilePicture={image3} />
-          <NftCard imageUrl={nft6} profilePicture={image2}/>
-          <NftCard imageUrl={nft5} profilePicture={image3}/>
-          <NftCard imageUrl={nft4} profilePicture={image2}/>
-          <NftCard imageUrl={nft3} profilePicture={image3}/>
-          <NftCard imageUrl={nft2} profilePicture={image2}/>
-          <NftCard imageUrl={nft1} profilePicture={image3} />
+          {
+            nfts.map((nft, index) => <NftCard key={index} nft={nft} />)
+          }
         </ScrollView>
       </ScrollView>
       {/* bottom navigation  */}
@@ -116,4 +94,3 @@ const HomeScreen = () => {
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})

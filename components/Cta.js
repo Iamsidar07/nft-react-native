@@ -1,35 +1,41 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
 const Cta = ({ prefixIcon, title, suffixIcon }) => {
   return (
 
-    <TouchableOpacity style={{
-      backgroundColor: "white",
+    <View style={[{
       padding: 20,
-      borderRadius: 7,
+      borderRadius: 10,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      marginTop: 5,
-      shadowColor: "white",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.23,
-      shadowRadius: 2.62,
-      elevation: 4,
-    }}>
+      marginTop: 10,
+    },styles.glass]}>
       {prefixIcon}
-      <Text style={{
+      <TouchableOpacity><Text style={{
         fontFamily: "SpaceGrotesk-SemiBold",
         fontSize: 16,
-      }}>{title}</Text>
-      {suffixIcon}
-    </TouchableOpacity>
+      }}>{title}</Text></TouchableOpacity>
+      <TouchableOpacity>{suffixIcon}</TouchableOpacity>
+    </View>
 
   )
 }
 
 export default Cta
+
+const styles = StyleSheet.create({
+  glass: {
+    backgroundColor: "rgba(255, 255, 255, 0.13)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.25)",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  }
+})
