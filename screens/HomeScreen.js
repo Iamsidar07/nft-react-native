@@ -26,7 +26,7 @@ const HomeScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{
         padding:7,
       }}>
-        {/* search bar  */}s
+        {/* search bar  */}
         <SearchBar
           prefix={<EvilIcons name="search" size={34} color="#a79afd" />}
           placeholder="Search nfts in your way"
