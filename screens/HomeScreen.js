@@ -13,25 +13,27 @@ import { nfts, hashtags } from '../content';
 
 const HomeScreen = () => {
   return (
+    <ImageBackground source={bg2} resizeMode="cover" blurRadius={5} style={StyleSheet.absoluteFillObject}>
 
     <SafeAreaView style={{
       height: "100%",
       display: "flex",
       justifyContent: "space-between",
-      backgroundColor: "#f1f1f1",
+      // backgroundColor: "#f1f1f1",
     }}>
-      <Image source={bg2} resizeMode="contain" blurRadius={5} style={StyleSheet.absoluteFillObject} />
       {/* header  */}
       <Header title="Discover" subTitle="Your Nft's" icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
-      <ScrollView showsVerticalScrollIndicator={false} >
-        {/* search bar  */}
+      <ScrollView showsVerticalScrollIndicator={false}  contentContainerStyle={{
+        padding:7,
+      }}>
+        {/* search bar  */}s
         <SearchBar
           prefix={<EvilIcons name="search" size={34} color="#a79afd" />}
           placeholder="Search nfts in your way"
           cursorColor={"black"} />
 
         {/* sub header  */}
-        <ScrollView horizontal contentContainerStyle={{
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{
           paddingHorizontal: 5,
           paddingTop: 10,
         }}>
@@ -89,6 +91,8 @@ const HomeScreen = () => {
       {/* bottom navigation  */}
       <BottomNavigation />
     </SafeAreaView>
+
+    </ImageBackground>
   )
 }
 

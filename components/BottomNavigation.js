@@ -7,13 +7,13 @@ const BottomNavigation = () => {
     const navigation = useNavigation();
     return (
         <View style={[{
-            padding: 5,
             flexDirection: 'row',
             justifyContent: "space-around",
             alignItems: "center",
-            backgroundColor: "#6319b8",
-            // bottom:5,
-            // borderRadius:40,
+            borderRadius:40,
+            padding:10,
+            marginHorizontal:10,
+            marginBottom:7,
         },styles.glass]}>
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
                 <AntDesign name="home" size={20} color="black" />
@@ -41,15 +41,15 @@ export default BottomNavigation
 
 const styles = StyleSheet.create({
     glass: {
-        backgroundColor: "rgba(255, 255, 255, 0.13)",
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
         borderWidth: 1,
         borderColor: "rgba(255, 255, 255, 0.23)",
         shadowColor: "black",
         shadowOffset: {
-            width: 0,
-            height: 1,
+            width: 2,
+            height: 4,
         },
-        shadowOpacity: 0.5,
+        shadowOpacity: 1,
         shadowRadius: 10,
     }
 })

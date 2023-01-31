@@ -15,17 +15,16 @@ const DetailScreen = () => {
   const route = useRoute();
   const nft = route.params;
   const {width,height}=Dimensions.get("screen");
-
+  
 
   return (
-    
+    <ImageBackground source={detailScreenBg} resizeMode="cover" blurRadius={5} style={StyleSheet.absoluteFillObject}>
       <SafeAreaView style={{
         display: "flex",
         justifyContent: "space-between",
         height: "100%",
-        // backgroundColor: "#f1f1f1",
+        // backgroundColor: "red",
       }}>
-        <Image source={detailScreenBg} resizeMode="cover" blurRadius={5} style={StyleSheet.absoluteFillObject}/>
         <Header title={nft.name} subTitle={nft.id} icon={<Ionicons name="ios-reorder-three-outline" size={44} color="black" />} />
 
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{
@@ -90,7 +89,7 @@ const DetailScreen = () => {
               </View>
             </View>
             <View style={[{flexDirection:"row",alignItems:"center",alignSelf:"flex-start",marginTop:5,backgroundColor:"white",paddingHorizontal:10 ,paddingVertical:5,borderRadius:30,},styles.glass]}>
-              <Image source={{uri:nft.img}} resizeMode="contain" style={{width:30,height:30,borderRadius:20,marginRight:5,}}/>
+              <Image source={{ uri: nft.owner.img }} resizeMode="contain" style={{width:30,height:30,borderRadius:20,marginRight:5,}}/>
               <Text style={{
                 fontFamily: "SpaceGrotesk-SemiBold",
                 fontSize: 14,
@@ -202,7 +201,7 @@ const DetailScreen = () => {
         </ScrollView>
         <BottomNavigation />
       </SafeAreaView>
-
+    </ImageBackground>
   )
 }
 
